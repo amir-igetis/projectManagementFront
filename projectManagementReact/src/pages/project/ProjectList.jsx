@@ -31,7 +31,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useDispatch, useSelector } from "react-redux";
-// import { fetchProjects, searchProjects } from "@/redux/Project/Project.Action";
+import { fetchProjects, searchProjects } from "@/redux/Project/Action";
 import { useLocation, useNavigate } from "react-router-dom";
 import { tags } from "./filterData";
 import {
@@ -43,7 +43,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import FilterSheet from "./FilterSheet";
-import { fetchProjects, searchProjects } from "@/Redux/Project/Action";
 
 const ProjectList = () => {
   const navigate = useNavigate();
@@ -54,11 +53,11 @@ const ProjectList = () => {
   const tag = searchParams.get("tag");
   const [keyword, setKeyword] = useState("");
 
-  const { project,auth } = useSelector((store) => store);
+  const { project, auth } = useSelector((store) => store);
 
   useEffect(() => {
     dispatch(fetchProjects({ category, tag }));
-  }, [category, tag,auth.jwt]);
+  }, [category, tag, auth.jwt]);
 
   const handleFilterChange = (section, value) => {
     console.log(value, section);
@@ -168,11 +167,11 @@ const ProjectList = () => {
             <div className="space-y-5 min-h-[74vh]">
               {keyword
                 ? project.searchProjects.map((item) => (
-                    <ProjectCard item={item} key={item.id} />
-                  ))
+                  <ProjectCard item={item} key={item.id} />
+                ))
                 : project.projects.map((item) => (
-                    <ProjectCard item={item} key={item.id} />
-                  ))}
+                  <ProjectCard item={item} key={item.id} />
+                ))}
             </div>
             {project.projects.length > 0 ? (
               <div>

@@ -4,10 +4,10 @@ import {
   CREATE_PAYMENT_FAILURE,
   CREATE_PAYMENT_REQUEST,
   CREATE_PAYMENT_SUCCESS,
-} from "./actionTypes";
+} from "./actionTypes.js";
 
-export const createPayment = ({planType,jwt}) => async (dispatch) => {
-  console.log("create payment reqData ", jwt,planType);
+export const createPayment = ({ planType, jwt }) => async (dispatch) => {
+  console.log("create payment reqData ", jwt, planType);
   try {
     dispatch({
       type: CREATE_PAYMENT_REQUEST,
@@ -22,7 +22,7 @@ export const createPayment = ({planType,jwt}) => async (dispatch) => {
 
     const { data } = await api.post(
       `/api/payments/${planType}`,
-     
+
       config
     );
     console.log("datta", data);
@@ -34,7 +34,7 @@ export const createPayment = ({planType,jwt}) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    console.log("error",error)
+    console.log("error", error)
     dispatch({
       type: CREATE_PAYMENT_FAILURE,
       payload:

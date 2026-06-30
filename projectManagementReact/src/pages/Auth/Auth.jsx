@@ -1,11 +1,9 @@
 import "./Auth.css";
 import { Button } from "@/components/ui/button";
 
-// import SignupForm from "./signup/SignupForm";
-// import LoginForm from "./login/login";
+import Signup from "./signup/Signup";
+import LoginForm from "./login/login";
 import { useState } from "react";
-import Signup from "./Signup";
-import LoginForm from "./Login";
 
 const Auth = () => {
   const [active, setActive] = useState(true);

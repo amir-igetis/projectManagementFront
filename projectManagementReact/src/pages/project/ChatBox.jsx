@@ -12,7 +12,7 @@ import { PaperPlaneIcon } from "@radix-ui/react-icons";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-// import { io } from "socket.io-client";
+import { io } from "socket.io-client";
 
 const ChatBox = () => {
   const [message, setMessage] = useState("");
@@ -121,7 +121,7 @@ const ChatBox = () => {
   //   }
   // }, [messages]);
 
-  
+
   return (
     <div className="sticky">
       <div className="border rounded-lg">

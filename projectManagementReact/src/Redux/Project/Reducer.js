@@ -5,8 +5,8 @@ const initialState = {
   projects: [],
   loading: false,
   error: null,
-  projectDetails:null,
-  searchProjects:[]
+  projectDetails: null,
+  searchProjects: []
 };
 
 const ProjectReducer = (state = initialState, action) => {
@@ -27,7 +27,7 @@ const ProjectReducer = (state = initialState, action) => {
         loading: false,
         projects: action.projects
       };
-      case actionTypes.SEARCH_PROJECT_SUCCESS:
+    case actionTypes.SEARCH_PROJECT_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -39,12 +39,12 @@ const ProjectReducer = (state = initialState, action) => {
         loading: false,
         projects: [...state.projects, action.project]
       };
-      case actionTypes.FETCH_PROJECT_BY_Id_SUCCESS:
-        return {
-          ...state,
-          loading: false,
-          projectDetails: action.projectDetails
-        };
+    case actionTypes.FETCH_PROJECT_BY_Id_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        projectDetails: action.projectDetails
+      };
     case actionTypes.UPDATE_PROJECT_SUCCESS:
       return {
         ...state,

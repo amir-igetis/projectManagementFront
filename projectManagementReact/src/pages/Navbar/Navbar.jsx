@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <div className="border-b  py-4 px-5 flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <p onClick={()=>navigate("/")} className="cursor-pointer">Project Managment</p>
+        <p onClick={() => navigate("/")} className="cursor-pointer">Project Managment</p>
         <Dialog>
           <DialogTrigger>
             <Button variant="ghost">New Project</Button>
@@ -45,7 +45,7 @@ const Navbar = () => {
             <CreateProjectForm />
           </DialogContent>
         </Dialog>
-        <Button onClick={()=>navigate("/upgrade_plan")} variant="ghost">Upgrade</Button>
+        <Button onClick={() => navigate("/upgrade_plan")} variant="ghost">Upgrade</Button>
       </div>
 
       <div className="flex gap-3 items-center">
@@ -63,8 +63,8 @@ const Navbar = () => {
             <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-<p className="lg:block hidden">{auth.user?.fullName} </p>
-        
+        <p className="lg:block hidden">{auth.user?.fullName} </p>
+
       </div>
     </div>
   );

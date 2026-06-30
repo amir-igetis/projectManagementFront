@@ -1,50 +1,51 @@
-import api from "@/config/api";
-import { GET_USER_SUBSCRIPTION_FAILURE, GET_USER_SUBSCRIPTION_REQUEST, GET_USER_SUBSCRIPTION_SUCCESS, UPGRADE_SUBSCRIPTION_FAILURE, UPGRADE_SUBSCRIPTION_REQUEST, UPGRADE_SUBSCRIPTION_SUCCESS } from "./ActionType"
+
+import * as types from "./ActionType";
+
+import api from "@/Api/api";
 
 export const getUserSubscription = (jwt) => {
     return async (dispatch) => {
-        dispatch({ type: GET_USER_SUBSCRIPTION_REQUEST });
+        dispatch({ type: types.GET_USER_SUBSCRIPTION_REQUEST });
         try {
-            const response = await api.get("/api/subscription/user", {
+            const response = await api.get("/api/subscriptions/user", {
                 headers: {
                     "Authorization": `Bearer ${jwt}`
                 }
             });
             dispatch({
-                type: GET_USER_SUBSCRIPTION_SUCCESS,
-                payload: response.data
+                type: types.GET_USER_SUBSCRIPTION_SUCCESS,
+                payload: response.data,
             });
-            console.log("user subscription ", response.data);
+            console.log("users subscription ", response.data)
         } catch (error) {
             console.log(error)
             dispatch({
-                type: GET_USER_SUBSCRIPTION_FAILURE,
-                payload: error.message
+                type: types.GET_USER_SUBSCRIPTION_FAILURE,
+                payload: error.message,
             });
         }
     };
 };
 
-
 export const upgradeSubscription = ({ planType }) => {
     return async (dispatch) => {
-        dispatch({ type: UPGRADE_SUBSCRIPTION_REQUEST });
+        dispatch({ type: types.UPGRADE_SUBSCRIPTION_REQUEST });
         try {
-            const response = await api.patch("/api/subscription/upgrade", null, {
+            const response = await api.patch("/api/subscriptions/upgrade", null, {
                 params: {
                     planType: planType,
                 },
             });
             dispatch({
-                type: UPGRADE_SUBSCRIPTION_SUCCESS,
-                payload: response.data
+                type: types.UPGRADE_SUBSCRIPTION_SUCCESS,
+                payload: response.data,
             });
-            console.log("upgrade subscription ", response.data);
+            console.log("upgraded subscription", response.data);
         } catch (error) {
             console.log(error.response.data)
             dispatch({
-                type: UPGRADE_SUBSCRIPTION_FAILURE,
-                payload: error.message
+                type: types.UPGRADE_SUBSCRIPTION_FAILURE,
+                payload: error.message,
             });
         }
     };

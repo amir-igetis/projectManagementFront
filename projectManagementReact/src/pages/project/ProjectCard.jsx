@@ -22,15 +22,14 @@ import UpdateProjectForm from "./UpdateProjectForm";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deleteProject } from "@/Redux/Project/Action";
-// import { deleteProject } from "@/redux/Project/Project.Action";
+import { deleteProject } from "@/redux/Project/Action";
 
 const ProjectCard = ({ item }) => {
   const navigate = useNavigate();
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
-  const hnadleDeleteProject=()=>{
-    dispatch(deleteProject({projectId:item.id}))
+  const hnadleDeleteProject = () => {
+    dispatch(deleteProject({ projectId: item.id }))
   }
 
   return (

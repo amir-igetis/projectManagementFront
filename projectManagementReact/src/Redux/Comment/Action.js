@@ -1,8 +1,6 @@
 // actions.js
-// import * as actionTypes from "./comment.actionTypes";
-import api from "@/config/api";
 import * as actionTypes from "./ActionTypes";
-// import api from "@/Api/api";
+import api from "@/Api/api";
 
 // Action for creating a comment
 export const createComment = (commentData) => {

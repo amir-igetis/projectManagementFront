@@ -14,12 +14,10 @@ import CommentCard from "./CommentCard";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-// import { fetchIssueById, updateIssueStatus } from "@/redux/Issue/Issue.action";
+import { fetchIssueById, updateIssueStatus } from "@/redux/Issue/Action";
 import { useParams } from "react-router-dom";
-// import { fetchComments } from "@/redux/Comment/comment.action";
+import { fetchComments } from "@/redux/Comment/Action";
 import { Badge } from "@/components/ui/badge";
-import { fetchIssueById, updateIssueStatus } from "@/Redux/Issue/Action";
-import { fetchComments } from "@/Redux/Comment/Action";
 
 const comments = [1, 1, 1];
 
@@ -116,13 +114,12 @@ const IssueDetails = () => {
                 <div className="flex gap-10 items-center">
                   <p className="w-[7rem]">Status</p>
                   <Badge
-                    className={`${
-                      issue.issueDetails?.status == "in_progress"
+                    className={`${issue.issueDetails?.status == "in_progress"
                         ? "bg-orange-300"
                         : issue.issueDetails?.status == "done"
-                        ? "bg-green-500"
-                        : ""
-                    }`}
+                          ? "bg-green-500"
+                          : ""
+                      }`}
                   >
                     {issue.issueDetails?.status}
                   </Badge>

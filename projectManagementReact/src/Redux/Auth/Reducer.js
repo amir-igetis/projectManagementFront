@@ -1,8 +1,7 @@
-// import {
-//   CREATE_PROJECT_SUCCESS,
-//   DELETE_PROJECT_SUCCESS,
-// } from "../Project/ActionType";
-import { CREATE_PROJECT_SUCCESS, DELETE_PROJECT_SUCCESS } from "../Project/ActionType";
+import {
+  CREATE_PROJECT_SUCCESS,
+  DELETE_PROJECT_SUCCESS,
+} from "../Project/ActionType";
 import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,

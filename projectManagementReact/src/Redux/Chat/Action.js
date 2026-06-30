@@ -1,10 +1,8 @@
-// import api from "@/Api/api";
-// import * as actionTypes from "./ActionTypes";
-import api from "@/config/api";
+import api from "@/Api/api";
 import * as actionTypes from "./ActionType";
 
 
-export const sendMessage = ({message,sendToServer}) => {
+export const sendMessage = ({ message, sendToServer }) => {
   return async (dispatch) => {
     dispatch({ type: actionTypes.SEND_MESSAGE_REQUEST });
     try {
@@ -28,9 +26,9 @@ export const sendMessage = ({message,sendToServer}) => {
 
 export const messageRecived = (message) => {
   return async (dispatch) => {
-  
+
     try {
-      
+
       dispatch({
         type: actionTypes.SEND_MESSAGE_SUCCESS,
         message: message,
@@ -45,26 +43,26 @@ export const messageRecived = (message) => {
 };
 
 export const fetchChatByProject = (projectId) => {
-    return async (dispatch) => {
-      dispatch({ type: actionTypes.FETCH_CHAT_BY_PROJECT_REQUEST });
-      try {
-        const response = await api.get(
-          `/api/projects/${projectId}/chat`
-        );
-        console.log("fetch chat ",response.data)
-        dispatch({
-          type: actionTypes.FETCH_CHAT_BY_PROJECT_SUCCESS,
-          chat: response.data,
-        });
-      } catch (error) {
-          console.log("error -- ",error)
-        dispatch({
-          type: actionTypes.FETCH_CHAT_BY_PROJECT_FAILURE,
-          error: error.message,
-        });
-      }
-    };
+  return async (dispatch) => {
+    dispatch({ type: actionTypes.FETCH_CHAT_BY_PROJECT_REQUEST });
+    try {
+      const response = await api.get(
+        `/api/projects/${projectId}/chat`
+      );
+      console.log("fetch chat ", response.data)
+      dispatch({
+        type: actionTypes.FETCH_CHAT_BY_PROJECT_SUCCESS,
+        chat: response.data,
+      });
+    } catch (error) {
+      console.log("error -- ", error)
+      dispatch({
+        type: actionTypes.FETCH_CHAT_BY_PROJECT_FAILURE,
+        error: error.message,
+      });
+    }
   };
+};
 
 export const fetchChatMessages = (chatId) => {
   return async (dispatch) => {
@@ -73,14 +71,14 @@ export const fetchChatMessages = (chatId) => {
       const response = await api.get(
         `/api/messages/chat/${chatId}`
       );
-      console.log("fetch messages ",response.data)
+      console.log("fetch messages ", response.data)
       dispatch({
         type: actionTypes.FETCH_CHAT_MESSAGES_SUCCESS,
         chatId,
         messages: response.data,
       });
     } catch (error) {
-        console.log("error -- ",error)
+      console.log("error -- ", error)
       dispatch({
         type: actionTypes.FETCH_CHAT_MESSAGES_FAILURE,
         error: error.message,

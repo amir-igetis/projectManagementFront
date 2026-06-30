@@ -15,8 +15,7 @@ import { Input } from "@/components/ui/input";
 
 import { AvatarFallback,Avatar } from "@/components/ui/avatar";
 import { useDispatch, useSelector } from "react-redux";
-import { createComment } from "@/Redux/Comment/Action";
-// import { createComment } from "@/redux/Comment/comment.action";
+import { createComment } from "@/redux/Comment/Action";
 
 const formSchema = z.object({
   content: z.string().min(2, {

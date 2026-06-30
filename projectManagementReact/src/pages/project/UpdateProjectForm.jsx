@@ -18,15 +18,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useDispatch, useSelector } from "react-redux";
-// import {
-//   createProject,
-//   fetchProjectById,
-//   updateProject,
-// } from "@/redux/Project/ProjectAction";
+import {
+  createProject,
+  fetchProjectById,
+  updateProject,
+} from "@/redux/Project/Action";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchProjectById, updateProject } from "@/Redux/Project/Action";
 
 const formSchema = object({
   name: string().min(1),
@@ -81,10 +80,10 @@ const UpdateProjectForm = () => {
     <div className="min-h-[90vh] flex flex-col justify-center items-center px-5">
       {project.projectDetails ? (
         <div className="border w-full flex flex-col justify-center lg:h-[75vh] p-10 lg:w-[30vw]">
-            <h1 className="text-center pb-9 text-lg font-semibold">Update Project</h1>
+          <h1 className="text-center pb-9 text-lg font-semibold">Update Project</h1>
           <Form className="" {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} 
-            className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-8">
               <FormField
                 control={form.control}
                 name="name"

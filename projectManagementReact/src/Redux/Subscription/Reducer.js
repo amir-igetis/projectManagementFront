@@ -1,4 +1,5 @@
-import { GET_USER_SUBSCRIPTION_FAILURE, GET_USER_SUBSCRIPTION_REQUEST, GET_USER_SUBSCRIPTION_SUCCESS, UPGRADE_SUBSCRIPTION_FAILURE, UPGRADE_SUBSCRIPTION_REQUEST, UPGRADE_SUBSCRIPTION_SUCCESS } from "./ActionType";
+// reducer.js
+import * as types from './ActionType';
 
 const initialState = {
     userSubscription: null,
@@ -6,42 +7,39 @@ const initialState = {
     error: null,
 };
 
-export const subscriptionReducer = (state = initialState, action) => {
+const subscriptionReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_USER_SUBSCRIPTION_REQUEST:
-        case UPGRADE_SUBSCRIPTION_REQUEST:
+        case types.GET_USER_SUBSCRIPTION_REQUEST:
+        case types.UPGRADE_SUBSCRIPTION_REQUEST:
             return {
                 ...state,
                 loading: true,
-                error: null
+                error: null,
             };
-
-        case GET_USER_SUBSCRIPTION_SUCCESS:
+        case types.GET_USER_SUBSCRIPTION_SUCCESS:
             return {
                 ...state,
                 userSubscription: action.payload,
                 loading: false,
                 error: null,
             };
-
-        case UPGRADE_SUBSCRIPTION_SUCCESS:
+        case types.UPGRADE_SUBSCRIPTION_SUCCESS:
             return {
                 ...state,
                 userSubscription: action.payload,
                 loading: false,
                 error: null,
             };
-
-
-        case GET_USER_SUBSCRIPTION_FAILURE:
-        case UPGRADE_SUBSCRIPTION_FAILURE:
+        case types.GET_USER_SUBSCRIPTION_FAILURE:
+        case types.UPGRADE_SUBSCRIPTION_FAILURE:
             return {
                 ...state,
                 loading: false,
-                error: action.payload
+                error: action.payload,
             };
-
         default:
             return state;
     }
 };
+
+export default subscriptionReducer;

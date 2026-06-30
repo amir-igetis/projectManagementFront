@@ -23,8 +23,7 @@ import { CreateIssueForm } from "./CreateIssueForm";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchIssues } from "@/Redux/Issue/Action";
-// import { fetchIssues } from "@/redux/Issue/Issue.action";
+import { fetchIssues } from "@/redux/Issue/Action";
 
 export function IssueList({ title, status }) {
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ export function IssueList({ title, status }) {
     dispatch(fetchIssues(id));
   }, [id]);
 
-  
+
 
   return (
     <div>
@@ -46,7 +45,7 @@ export function IssueList({ title, status }) {
           </CardHeader>
           <CardContent className="px-2">
             <div className="space-y-2">
-              {issue.issues.filter((item)=>item.status==status).map((item) => (
+              {issue.issues.filter((item) => item.status == status).map((item) => (
                 <IssueCard item={item} key={item} />
               ))}
             </div>

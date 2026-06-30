@@ -4,10 +4,10 @@ import ChatBox from "./ChatBox";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-// import {
-//   fetchProjectById,
-//   inviteToProject,
-// } from "@/redux/Project/Project.Action";
+import {
+  fetchProjectById,
+  inviteToProject,
+} from "@/redux/Project/Action";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import Loader from "../Loader/Loader";
@@ -16,12 +16,11 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import InviteUserForm from "./InviteUserForm";
 import { IssueList } from "../IssueDetails/IssueList";
-import { fetchProjectById, inviteToProject } from "@/Redux/Project/Action";
 
 const ProjectDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { project,auth } = useSelector((store) => store);
+  const { project, auth } = useSelector((store) => store);
   useEffect(() => {
     dispatch(fetchProjectById(id));
   }, [id]);
@@ -58,28 +57,28 @@ const ProjectDetails = () => {
                       ))}
                     </div>
 
-                   {auth.user?.id===project.projectDetails?.owner.id && <Dialog>
+                    {auth.user?.id === project.projectDetails?.owner.id && <Dialog>
                       <DialogTrigger>
-                      <DialogClose>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="ml-2"
-                          onClick={handleProjectInvitation}
-                        >
-                          {" "}
-                          <span className="pr-1">invite</span>
-                          <PlusIcon className="w-3 h-3" />
-                        </Button>
-                      </DialogClose>
-                        
+                        <DialogClose>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="ml-2"
+                            onClick={handleProjectInvitation}
+                          >
+                            {" "}
+                            <span className="pr-1">invite</span>
+                            <PlusIcon className="w-3 h-3" />
+                          </Button>
+                        </DialogClose>
+
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
                           <DialogTitle>Invite User</DialogTitle>
-                         
+
                         </DialogHeader>
-                        <InviteUserForm projectId={id}/>
+                        <InviteUserForm projectId={id} />
                       </DialogContent>
                     </Dialog>}
                   </div>
